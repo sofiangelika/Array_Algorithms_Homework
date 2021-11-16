@@ -2,6 +2,8 @@ package com.company;
 
 import ibcsutils.ReadViaURL;
 
+import java.util.Arrays;
+
 import static ibio.Helpers.input;
 
 public class Main {
@@ -9,7 +11,8 @@ public class Main {
     public static void main(String[] args) {
         homework_1();
         homework_2();
-        homework_4();
+        //homework_4();
+        homework_5();
 
     }
 
@@ -54,6 +57,7 @@ public class Main {
 
         String key = input("Enter a key: ");
 
+        //sequential search
         for (int index = 0; index < words.length; index++) {
             if (words[index].equals(key)) {
                 System.out.println("Found key: " + key);
@@ -61,6 +65,7 @@ public class Main {
             }
         }
 
+        //binary search
         int lo = 0;
         int hi = words.length - 1;
 
@@ -75,7 +80,21 @@ public class Main {
             else
                 lo = mid + 1;
         }
-
-
     }
+
+    static void homework_5() {
+        int[] numbers = {9, 7, 2, 11};
+        for (int i = 1; i < numbers.length; i++) {
+            int val = numbers[i];
+            int j = i - 1;
+            while (j >= 0 && numbers[j] > val) {
+                numbers[j + 1] = numbers[j];
+                j--;
+            }
+            numbers[j + 1] = val;
+        }
+        System.out.println(Arrays.toString(numbers));
+    }
+
+
 }
