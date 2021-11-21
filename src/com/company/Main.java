@@ -11,7 +11,8 @@ public class Main {
     public static void main(String[] args) {
         homework_1();
         homework_2();
-        //homework_4();
+        homework_3();
+        homework_4();
         homework_5();
 
     }
@@ -50,6 +51,40 @@ public class Main {
         }
     }
 
+    static void homework_3() {
+        //selection sort
+        int[] data = {-4, 11, 7, -12, 6, 1};
+        for (int i = 0; i < data.length - 1; i++) {
+            int ind_smallest = i;
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[j] < data[ind_smallest])
+                    ind_smallest = j;
+            }
+            swap(data, i, ind_smallest);
+            System.out.println(Arrays.toString(data));
+        }
+
+        //bubble sort
+        final int n = data.length;
+        boolean changed = true;
+        while (changed) {
+            changed = false;
+            for (int i = 0; i <= n - 2; i++) {
+                if (data[i] > data[i + 1]) {
+                    swap(data, i, i + 1);
+                    changed = true;
+                }
+                System.out.println(Arrays.toString(data));
+            }
+        }
+    }
+
+    static void swap(int[] array, int ind1, int ind2) {
+        int tmp = array[ind1];
+        array[ind1] = array[ind2];
+        array[ind2] = tmp;
+    }
+
     static void homework_4() {
         String address = "http://www-personal.umich.edu/~jlawler/wordlist";
         String[] words = ReadViaURL.readWords(address, true, true, true);
@@ -83,7 +118,7 @@ public class Main {
     }
 
     static void homework_5() {
-        int[] numbers = {9, 7, 2, 11};
+        int[] numbers = {9, -28, 4, 10, -2};
         for (int i = 1; i < numbers.length; i++) {
             int val = numbers[i];
             int j = i - 1;
@@ -93,8 +128,6 @@ public class Main {
             }
             numbers[j + 1] = val;
         }
-        System.out.println(Arrays.toString(numbers));
     }
-
 
 }
